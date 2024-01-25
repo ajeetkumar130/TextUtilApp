@@ -8,8 +8,7 @@ import Alert from './component/Alert';
 import {
   Route,
   BrowserRouter as Router,
-  Routes,
-  Switch
+  Routes
 } from "react-router-dom";
 import { About } from './component/About';
 
@@ -32,11 +31,10 @@ function App() {
         <Navbar title="TextUtil" about="about" />
         <Alert alert={alert} />
         <Routes>
-          <Route showAlert={showAlert} path="/" heading="TextUtils - word counter, character counter, remove extra spaces" element={<TextForm />} />
+          <Route path="/" element={<TextForm showAlert={showAlert} />} />
           <Route exact path="/about" element={<About />} />
-
-          {/* <About  path="/about" component={About}/> */}
         </Routes>
+
         {/* <Navbar /> */}
         <Container>
 
