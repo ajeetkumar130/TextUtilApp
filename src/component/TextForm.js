@@ -27,12 +27,22 @@ export function TextForm(props) {
 
     }
    
-    const handelCopyClick =() =>{
-        var text= document.getElementById("myBox")
-        navigator.clipboard.writeText(text.value)
-        props.showAlert("Copy clipboard!", "success");
-    }
+    // const handelCopyClick =() =>{
+    //     var text= document.getElementById("myBox")
+    //     navigator.clipboard.writeText(text.value)
+    //     props.showAlert("Copy clipboard!", "success");
+    // }
 
+    const handelCopyClick = async () => {
+        try {
+            var text = document.getElementById("myBox");
+            await navigator.clipboard.writeText(text.value);
+            props.showAlert("Copy clipboard!", "success");
+        } catch (error) {
+            console.error('Clipboard writeText error:', error);
+            props.showAlert("Clipboard operation failed.", "error");
+        }
+    }
     const handleOnChange = (event)=>{
         setText(event.target.value)
 
